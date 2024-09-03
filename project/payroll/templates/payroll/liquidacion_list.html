@@ -1,0 +1,16 @@
+{% extends "payroll/base.html" %}
+
+{% block header %}
+Liquidaciones: Registros
+{% endblock header %}
+
+{% block main %}
+    <button>
+        <a href="{% url 'liquidacion_create' %}">Crear Registro</a> 
+    </button>
+    {% for object in object_list %}
+        <p>{{ object.empleado.nombre }} {{ object.empleado.apellido }} {{ object.empresa.razon_social }} {{ object.fecha | date:"m/y" }} ${{ object.sueldo_bruto }}</p>
+    {% empty %}
+        <p>No hay registros.</p>
+    {% endfor %}
+{% endblock main %}

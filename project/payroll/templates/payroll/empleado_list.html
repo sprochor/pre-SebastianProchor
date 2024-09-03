@@ -1,0 +1,16 @@
+{% extends "payroll/base.html" %}
+
+{% block header %}
+Empleados: Registros
+{% endblock header %}
+
+{% block main %}
+    <button>
+        <a href="{% url 'empleado_create' %}"">Crear Registro</a> 
+    </button>
+    {% for object in object_list %}
+        <p>{{ object }}</p>
+    {% empty %}
+        <p>No hay registros.</p>
+    {% endfor %}
+{% endblock main %}
